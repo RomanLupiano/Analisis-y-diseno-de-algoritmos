@@ -17,6 +17,11 @@ AXIOMS l:Lista, i, j:natural, e:Elemento;
     longLista(agregarLista(l, i, e)) = longLista(l) + 1;
 
     (i == j) => eliminarLista(agregarLista(l, i, e), j) = l;
+    (i < j) => eliminarLista(agregarLista(l, i, e), j) = agregarLista(eliminarLista(l, j-1), i, e);
+    (i > j) => eliminarLista(agregarLista(l, i, e), j) = agregarLista(eliminarLista(l, j), i-1, e);
 
+    (i == j) => recuperarLista(agregarLista(l, i, e), j) = e;
+    (i < j) => recuperarLista(agregarLista(l, i, e), j) = recuperarLista(l, j-1);
+    (i > j) => recuperarLista(agregarLista(l, i, e), j) = recuperarLista(l, j);
 
 END-CLASS

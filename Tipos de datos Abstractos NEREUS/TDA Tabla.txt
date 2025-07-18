@@ -1,0 +1,37 @@
+TDA Tabla: debe permitir almacenar valores enteros para cálculos numéricos y contar al menos con la siguiente funcionalidad:
+● inicializar la tabla con el número máximo de filas y columnas
+● agregar un entero en una celda
+● consultar si hay un entero almacenado en una celda dada
+● consultar el valor del entero almacenado en una celda dada
+● devolver el mayor entero almacenado en la tabla
+● devolver la suma de los enteros almacenados en una columna dada
+
+CLASS Tabla
+BASIC CONSTRUCTORS crearTabla, agregar
+EFFECTIVE
+TYPE Tabla
+OPERATIONS
+    crearTabla: Natural(f) x Natural(c) -> Tabla
+        pre: (f > 0) and (c > 0);
+    agregar: Tabla (t) x Natural (f) x Natural(c) x Natural -> Tabla
+        pre: cantidadFilas (t) ≥ f and cantidadColumnas(t) ≥ c;
+    existe: Tabla(t) x Natural(f) x Natural(c) -> Boolean
+        pre: cantidadFilas (t) ≥ f and cantidadColumnas(t) ≥ c;
+    valor: Tabla(t) x Natural(f) x Natural(c) -> Natural
+        pre: existe(t, f, c);
+    sumaColumna: Tabla(t) x Natural(f) x Natural(c) -> Natural
+        pre: cantidadFilas (t) ≥ f and cantidadColumnas(t) ≥ c;
+    mayorEntero: tabla -> Natural;
+    cantidadFilas: tabla -> Natural;
+    cantidadColumnas: tabla -> Natural;
+AXIOMS t: Tabla, …………………………………………………;
+    cantidadFilas(crearTabla(x, y)) = x;
+    cantidadColumnas(crearTabla(x, y)) = y;
+
+    existe(crearTabla(x, y), f, c) = False;
+    (a==f and b==c) => existe(agregar(t, a, b, e), f, c) = True;
+    not (a==f and b==c) => existe(agregar(t, a, b, e), f, c) = existe(t, f, c);
+
+    valor()
+
+END_CLASS

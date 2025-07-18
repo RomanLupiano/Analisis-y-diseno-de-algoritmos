@@ -1,0 +1,24 @@
+CLASS Circulo
+IMPORTS Punto
+BASIC CONSTRUCTORS initCirculo
+EFFECTIVE
+TYPE Circulo
+OPERATIONS
+    initCirculo: Punto * Real(r) -> Circulo
+        pre: r > 0; --No se puede hacer un circulo de radio cero, sería un punto.
+    origen: Circulo -> Punto;
+    radio: Circulo -> Real;
+    area: Circulo -> Real;
+    trasladar: Circulo * Punto -> Circulo;
+    ModificarTamaño: Circulo * Real -> Circulo
+        pre: r > 0;
+    _==_: Circulo * Circulo -> Boolean; 
+
+AXIOMS r, r2, pi: Real; p, p2: Punto; 
+    origen(initCirculo(p, r)) = p;
+    radio(initCirculo(p, r)) = r;
+    area(initCirculo(p, r)) = pi * (r * r);
+    trasladar(initCirculo(p, r), p2) = initCirculo(p2, r);
+    ModificarTamaño(initCirculo(p, r), r2) = initCirculo(p, r2);
+    initCirculo(p, r) == initCirculo(p2, r2) = (p==p2) and (r==r2);
+END-CLASS

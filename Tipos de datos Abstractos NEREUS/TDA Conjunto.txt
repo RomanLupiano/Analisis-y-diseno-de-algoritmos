@@ -1,0 +1,45 @@
+CLASS Conjunto [Elemento]
+BASIC CONSTRUCTORS crear, agregar
+EFFECTIVE
+TYPE Conjunto
+OPERATIONS
+    crear: -> Conjunto;
+    agregar: Conjunto(c) * Elemento(e) -> Conjunto;
+        pre: e ∈ c;
+    eliminar: Conjunto(c) * Elemento -> Conjunto;
+    esVacio: Conjunto -> Boolean;
+    tamaño: Conjunto -> Natural;
+    _∈_: Elemento * Conjunto -> Boolean;
+    _U_: Conjunto * Conjunto -> Conjunto;
+    _∩_: Conjunto * Conjunto -> Conjunto;
+    _==_: Conjunto * Conjunto;
+
+AXIOMS c, c1: Conjunto; e, e1: Elemento;
+    agregar(agregar(c, e), e1) = agregar(agregar(c, e1), e); --Propiedad de los conjuntos
+    
+    esVacio(crear()) = True;
+    esVacio(agregar(c, e)) = False;
+    
+    tamaño(crear()) = 0;
+    tamaño(agregar(c, e)) = 1 + tamaño(c);
+    
+    e ∈ crear() = False;
+    (e == e1) => e ∈ agregar(c, e1) = True;
+    not (e == e1) => e ∈ agregar(c, e1) = e ∈ c;
+
+    eliminar(crear(), e1) = crear();
+    (e == e1) => eliminar(agregar(c, e1), e1) = c;
+    not (e == e1) => eliminar(agregar(c, e), e1) = agregar(eliminar(c, e1), e); 
+
+    c U crear() = c;
+    (e ∈ c) => c U agregar(c1, e) = c U c1;
+    not (e ∈ c) => c U agregar(c1, e) = agregar(c U c1, e);
+
+    c ∩ crear() = crear();
+    (e ∈ c) => c ∩ agregar(c1, e) = agregar(c ∩ c1, e);
+    not (e ∈ c) => c ∩ agregar(c1, e) = c ∩ c1;
+
+    c == crear() = esVacio(c);
+    (e ∈ c) => c == agregar(c1, e) = eliminar(c, e) == c1; 
+    not (e ∈ c) => c == agregar(c1, e) = false;
+END-CLASS
