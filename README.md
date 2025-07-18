@@ -1,15 +1,12 @@
 # Análisis y diseño de algoritmos
 
-# 📘 Análisis y Diseño de Algoritmos I
-
 Repositorio con apuntes, implementaciones y ejercicios sobre Análisis y Diseño de Algoritmos.
 
 
----
 
 ## 📚 Contenidos
 
-### ✔️ Unidad 1: Análisis de eficiencia
+### Unidad 1: Análisis de eficiencia
 - Análisis teórico vs empírico
 - Notaciones: Big-O, Ω, Θ
 - Complejidad temporal
@@ -17,7 +14,7 @@ Repositorio con apuntes, implementaciones y ejercicios sobre Análisis y Diseño
 
 ---
 
-### ✔️ Unidad 2: Tipos de Datos Abstractos (TDA)
+### Unidad 2: Tipos de Datos Abstractos (TDA)
 - Especificación algebraica
 - Pilas, colas, listas, árboles binarios
 - Herencia, cliente, encapsulamiento
@@ -26,8 +23,8 @@ Repositorio con apuntes, implementaciones y ejercicios sobre Análisis y Diseño
 
 ---
 
-### ✔️ Unidad 3: Técnicas de diseño de algoritmos
-- **Divide y vencerás**: Mergesort, Quicksort, Strassen
+### Unidad 3: Técnicas de diseño de algoritmos
+- **Divide y conquista**: Mergesort, Quicksort, Strassen
 - **Greedy**: mochila, scheduling
 - **Programación dinámica**: LCS, matriz óptima, BST óptimo
 

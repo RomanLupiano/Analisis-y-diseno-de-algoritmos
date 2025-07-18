@@ -11,6 +11,12 @@ OPERATIONS
     coodX: Punto -> Real;
     coodY: Punto -> Real;
     trasladar: Punto * Real * Real -> Punto;
-    distancia: Pu
+    distancia: Punto * Punto -> Real;
+    _==_: Punto * Punto -> Boolean;
 
-    sumarPuntos: 
+AXIOMS x,y, a, b: Real;
+    coodX(inicPunto(x, y)) = x;
+    coodY(inicPunto(x, y)) = y;
+    trasladar(inicPunto(x, y), a, b) = inicPunto(x+a, y+b);
+    distancia(inicPunto(x, y), inicPunto(a, b)) = sqrt((a - x)²+(b - y)²);
+    inicPunto(x, y) == inicPunto(a, b) = (x==a) and (y==b);
