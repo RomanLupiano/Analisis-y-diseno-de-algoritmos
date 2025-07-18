@@ -1,0 +1,16 @@
+TDA Punto en R2
+
+CLASS Punto
+IMPORTS Real
+BASIC CONSTRUCTORS inicPunto
+EFFECTIVE
+TYPE Punto
+
+OPERATIONS
+    inicPunto: Real * Real -> Punto;
+    coodX: Punto -> Real;
+    coodY: Punto -> Real;
+    trasladar: Punto * Real * Real -> Punto;
+    distancia: Pu
+
+    sumarPuntos: 

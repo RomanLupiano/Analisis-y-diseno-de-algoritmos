@@ -1,0 +1,37 @@
+TDA Tablero: permite registrar el puntaje de dos equipos
+
+CLASS Tablero
+BASIC CONSTRUCTORS crearTablero
+EFFECTIVE
+TYPE Tablero
+
+OPERATIONS
+    crearTablero: Natural x Natural -> Tablero; //Constructora
+    -- crea un tablero con los puntajes iniciales de ambos equipos
+    puntaje_Equipo1: Tablero -> Natural; //Observadora
+    puntaje_Equipo2: Tablero -> Natural; //Observadora
+    gana_Equipo1: Tablero -> Boolean;    //Observadora
+    gana_Equipo2: Tablero -> Boolean;    //Observadora
+    empate: Tablero -> Boolean;          //Observadora
+    anota_Equipo1: Tablero x Natural -> Tablero; //Modificadora
+    anota_Equipo2: Tablero x Natural -> Tablero; //Modificadora
+
+    AXIOMS n1,n2: Natural;
+    puntaje_Equipo1 (crearTablero (n1,n2))= n1;
+    puntaje_Equipo2 (crearTablero (n1,n2))= n2;
+    n1 > n2 => gana_Equipo1 (crearTablero (n1,n2))= True;
+    n1 <= n2 => gana_Equipo1 (crearTablero (n1,n2))= False;
+    n2 > n1 => gana_Equipo2 (crearTablero (n1,n2))= True;
+    n2 <= n1 => gana_Equipo2 (crearTablero (n1,n2))= False;
+    (n1>n2) or (n1<n2) => empate(crearTablero (n1,n2))= False;
+    n2 == n1 => empate (crearTablero (n1,n2))= True;
+    anota_Equipo1(crearTablero(n1, n2)) = crearTablero(n1+1, n2);
+    anota_Equipo2(crearTablero(n1, n2)) = crearTablero(n1, n2+1);
+
+END_CLASS
+
+
+Algunos términos del álgebra:
+crearTablero(0,0); -> |0|0|
+anota_Equipo1(crearTablero(2,4)); -> |3|4|
+empate(crearTablero(3, 3)) -> True

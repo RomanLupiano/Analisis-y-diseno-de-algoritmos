@@ -1,0 +1,30 @@
+TDA Reloj: permite registrar la hora, los minutos y los segundos
+
+CLASS Reloj
+BASIC CONSTRUCTORS inicReloj
+EFFECTIVE
+TYPE Reloj
+OPERATIONS
+    inicReloj: Natural (h) * Natural (m) * Natural (s) -> Reloj
+        pre: h < 24 and m < 60 and s < 60;
+    -- crea un reloj con los valores iniciales de hora, minuto y segundo
+    hora?: Reloj -> Natural;
+    minutos?: Reloj -> Natural;
+    segundos?: Reloj -> Natural;
+    tic: Reloj-> Reloj;
+    setearHora: Reloj * Natural(h) * Natural(m) * Natural(s) -> Reloj;
+        pre: (h < 24) and (m < 60) and (s < 60);
+    _==_: Reloj * Reloj -> Boolean;
+
+AXIOMS s, m, h, s1, m1, h1: Natural;
+    hora? (inicReloj(h, m, s)) = h;
+    minutos? (inicReloj(h, m, s)) = m;
+    segundos? (inicReloj(h, m, s)) = s;
+    s== 59 and m==59 and h== 23 => tic (inicReloj (h,m,s)) = inicReloj (0,0,0);
+    s== 59 and m==59 and h < 23 => tic (inicReloj (h,m,s)) = inicReloj (h+1,0,0);
+    s== 59 and m < 59 => tic (inicReloj (h,m,s)) = inicReloj (h,m+1,0);
+    s < 59 => tic (inicReloj (h,m,s)) = inicReloj (h,m,s+1);
+    setearHora(inicReloj (h,m,s), h1, m1,s1) = inicReloj (h1, m1, s1);
+    (s==s1) and (m==m1) and (h==h1) => (inicReloj(h, m, s) == inicReloj(h1, m1, s1)) = True;
+    (not(s==s1)) or (not(m==m1)) or (not(h==h1)) => (inicReloj(h, m, s) == inicReloj(h1, m1, s1)) = False;
+END_CLASS

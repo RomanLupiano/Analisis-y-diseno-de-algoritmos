@@ -1,0 +1,22 @@
+CLASS Lista [Elemento]
+BASIC CONSTRUCTORS inicLista, agregarLista;
+EFFECTIVE
+TYPE Lista
+OPERATIONS
+    inicLista: -> Lista;
+    agregarLista: Lista(l) * Natural(i) * Elemento -> Lista
+        pre: (i >= 1) and (i <= longLista(l)+1);
+    longLista: Lista -> Natural;
+    recuperarLista: Lista(l) * Natural(i) -> Lista
+        pre: (i >= 1) and (i <= longLista(l));
+    eliminarLista: Lista(l) * Natural(i) -> Lista
+        pre: (i >= 1) and (i <= longLista(l));
+
+AXIOMS l:Lista, i, j:natural, e:Elemento;
+    longLista(inicLista()) = 0;
+    longLista(agregarLista(l, i, e)) = longLista(l) + 1;
+
+    (i == j) => eliminarLista(agregarLista(l, i, e), j) = l;
+
+
+END-CLASS
