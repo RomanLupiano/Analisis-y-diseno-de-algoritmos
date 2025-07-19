@@ -18,5 +18,5 @@ AXIOMS x,y, a, b: Real;
     coodX(inicPunto(x, y)) = x;
     coodY(inicPunto(x, y)) = y;
     trasladar(inicPunto(x, y), a, b) = inicPunto(x+a, y+b);
-    distancia(inicPunto(x, y), inicPunto(a, b)) = sqrt((a - x)²+(b - y)²);
+    distancia(inicPunto(x, y), inicPunto(a, b)) = ((a - x)^2 +(b - y)^2)^(1/2);
     inicPunto(x, y) == inicPunto(a, b) = (x==a) and (y==b);

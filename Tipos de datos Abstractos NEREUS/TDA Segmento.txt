@@ -16,5 +16,5 @@ AXIOMS n1, n2: Real, p1, p2, p3, p4: Punto;
     extremoB(initSegmento(p1, p2)) = p2;
     trasladar(initSegmento(p1, p2), n1, n2) = initSegmento(trasladar(p1, n1, n2), trasladar(p2, n1, n2));
     longitud(initSegmento(p1, p2)) = distancia(p1, p2);
-    initSegmento(p1, p2) == initSegmento(p3, p4) = (p1==p3) and (p2==p4); 
+    initSegmento(p1, p2) == initSegmento(p3, p4) = ((p1==p3) and (p2==p4)) or ((p1==p4) and (p2==p3)); 
 END-CLASS
