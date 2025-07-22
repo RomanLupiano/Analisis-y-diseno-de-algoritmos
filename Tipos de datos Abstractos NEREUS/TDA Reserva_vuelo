@@ -1,0 +1,14 @@
+TDA Reserva_vuelo: Para gestionar las reservas de vuelos, una aerolínea desea
+especificar el tipo de dato “Reserva_Vuelo”. Considere que cada avión tiene un número
+fijo de butacas por fila. Cada butaca está identificada por el número de fila y el número
+de butaca dentro de esa fila. El TDA Reserva_vuelo debería contar al menos con la
+siguiente funcionalidad:
+● inicializar las reservas
+● agregar una reserva (asiento + DNI_pasajero)
+● eliminar una reserva (dado un DNI_pasajero)
+● eliminar todas las reservas
+● eliminar la reserva de un pasajero
+● consultar si un avión está lleno
+● consultar qué pasajero está sentado en una butaca dada
+● consultar la cantidad de butacas libres
+● devolver un listado de pasajeros

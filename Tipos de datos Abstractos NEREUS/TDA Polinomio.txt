@@ -1,0 +1,45 @@
+TDA Polinomio de una variable con coeficientes enteros,
+p(x) = a0 + a1 x + ... + an-1 xn-1 + an xn, n ∈ N, ∀ i : 0 ≤ i ≤ n: ai ∈ Z,
+con las siguientes operaciones:
+● cero : representa el polinomio p(x) = 0
+● añadir: añade un monomio a un polinomio
+● evaluar: calcula el valor del polinomio para un valor x dado
+● coeficiente: devuelve el coeficiente correspondiente al monomio de un grado
+dado
+● suma: devuelve la suma de dos polinomios.
+
+CLASS Monomio
+IMPORTS String
+BASIC CONSTRUCTORS crear
+EFFECTIVE
+TYPE Monomio
+OPERATIONS
+    crear: Natural * String * Natural(g) -> Monomio;
+        pre: g >= 0;
+    coeficiente: Monomio -> Natural;
+    variable: Monomio-> String;
+    grado: Monomio -> Natural;
+    suma: Monomio(a) * Monomio(b) -> Monomio;
+        pre: (variable(a) == variable(b)) and (grado(a)==grado(b));
+AXIOMS v, v1: String; c, c1, g, g1: Natural;
+    coeficiente(crear(c, v, g)) = c;
+    variable(crear(c, v, g)) = v;
+    grado(crear(c, v, g)) = g;
+    suma(crear(c, v, g), crear(c1, v1, g1)) = crear(c+c2, v, g);
+END-CLASS
+
+
+CLASS Polinomio
+IMPORTS Monomio
+BASIC CONSTRUCTORS cero, añadir
+EFFECTIVE
+TYPE Polinomio
+OPERATIONS
+    cero: -> Polinomio;
+    añadir: Polinomio * Polinomio -> Polinomio;
+    evaluar: Polinomio * Real -> Real;
+    coeficiente: Polinomio * Natural -> Natural;
+    suma: Polinomio * Polinomio -> Polinomio;
+AXIOMS
+    
+END-CLASS

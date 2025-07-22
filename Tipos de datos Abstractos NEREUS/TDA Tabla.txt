@@ -19,8 +19,8 @@ OPERATIONS
         pre: cantidadFilas (t) ≥ f and cantidadColumnas(t) ≥ c;
     valor: Tabla(t) x Natural(f) x Natural(c) -> Natural
         pre: existe(t, f, c);
-    sumaColumna: Tabla(t) x Natural(f) x Natural(c) -> Natural
-        pre: cantidadFilas (t) ≥ f and cantidadColumnas(t) ≥ c;
+    sumaColumna: Tabla(t) x Natural(c) -> Natural
+        pre: cantidadColumnas(t) ≥ c;
     mayorEntero: tabla -> Natural;
     cantidadFilas: tabla -> Natural;
     cantidadColumnas: tabla -> Natural;
@@ -32,6 +32,14 @@ AXIOMS t: Tabla, …………………………………………………;
     (a==f and b==c) => existe(agregar(t, a, b, e), f, c) = True;
     not (a==f and b==c) => existe(agregar(t, a, b, e), f, c) = existe(t, f, c);
 
-    valor()
+    (a==f and b==c) => valor(agregar(t, f, c, e), a, b) = e;
+    not (a==f and b==c) => valor(agregar(t, f, c, e), a, b) = valor(t, a, b);
 
-END_CLASS
+    mayor(crearTabla(x, y)) = 0;
+    (e >= mayor(t)) => mayor(agregar(t, x, y, e)) = e;
+    (e < mayor(t)) => mayor(agregar(t, x, y, e)) = mayor(t);
+
+    sumaColumna(crearTabla(x, y), c) = 0;
+    (y==c) => sumaColumna(agregar(t, x, y, e), c) = e + sumaColumna(t, c);
+    not (y==c) => sumaColumna(agregar(t, x, y, e), c) = sumaColumna(t, c);
+END-CLASS

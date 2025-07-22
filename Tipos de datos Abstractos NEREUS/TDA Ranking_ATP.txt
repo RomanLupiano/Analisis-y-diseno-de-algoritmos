@@ -1,0 +1,45 @@
+TDA Ranking_ATP. La Asociación de Tenistas Profesionales (ATP) establece un
+ranking según el cual ordena a todos los jugadores del mundo en función de los
+puntos logrados en los torneos. Para cada jugador se registra el nombre y el puntaje
+logrado hasta el momento.
+Especifique el TDA Ranking_ATP tal que permita:
+● agregar un nuevo jugador con su puntaje
+● eliminar un jugador
+● dado un jugador obtener su puntaje
+● modificar el puntaje de un jugador dado
+● devolver el jugador con mayor ranking
+● devolver la cantidad de jugadores en el ranking
+● listar los jugadores cuyo puntaje sea mayor que cierto valor dado
+
+
+CLASS Ranking_ATP
+IMPORTS String
+BASIC CONSTRUCTORS crear, agregar
+EFFECTIVE
+Type Ranking_ATP
+OPERATIONS
+    crear: -> Ranking_ATP;
+    agregar: Ranking_ATP * String * Natural(p) -> Ranking_ATP
+        pre: p >= 0; 
+    eliminar: Ranking_ATP * String -> Ranking_ATP;
+    puntaje: Ranking_ATP * String -> Natural;
+    modificarPuntaje: Ranking_ATP * String * Natural -> Ranking_ATP;
+    jugadorMayorRank: Ranking_ATP -> String;
+    cantJugadores: Ranking_ATP -> Natural;
+    listarMayorA: Ranking_ATP * Natural -> ??;
+
+AXIOMS r: Ranking_ATP; j, j1: String; 
+    eliminar(crear()) = crear();
+    (j==j1) => eliminar(agregar(r, j, p), j1) = r;
+    not (j==j1) => eliminar(agregar(r, j, p), j1) = agregar(eliminar(r, j1), j, p);
+
+    puntaje(crear(), j) = 0;
+    (j==j1) => puntaje(agregar(r, j, p), j1) = p;
+    not (j==j1) => puntaje(agregar(r, j, p), j1) = puntaje(r, j1);
+
+    modificarPuntaje(crear(), j, p) = crear();
+    (j==j1) => modificarPuntaje(agregar(r, j, p), j1, p1) = agregar(r, j, p1);
+    not (j==j1) => modificarPuntaje(agregar(r, j, p), j1, p1) = agregar(r, j, p1);
+
+    
+ 
