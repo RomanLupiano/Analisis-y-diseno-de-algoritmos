@@ -3,17 +3,17 @@
 
 using namespace std;
 
-string reverseString(string cadena){
-    if(cadena == ""){
+string reverseString(string input){
+    if(input == ""){
         return "";
     } else {
-        return reverseString(cadena.erase(0, 1)) + cadena.at(0);
+        return reverseString(input.erase(0, 1)) + input.at(0);
     }
 }
 
 int main(){
-    std::string aRevertir;
-    std::cin >> aRevertir;
-    std::cout << reverseString(aRevertir);
+    string text;
+    cin >> text;
+    cout << reverseString(text);
     return 0;
 }

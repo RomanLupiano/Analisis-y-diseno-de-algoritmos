@@ -1,6 +1,6 @@
 # Análisis y diseño de algoritmos
 
-Repositorio con apuntes, implementaciones y ejercicios sobre Análisis y Diseño de Algoritmos.
+Repositorio con implementaciones y ejercicios sobre Análisis y Diseño de Algoritmos.
 
 
 
