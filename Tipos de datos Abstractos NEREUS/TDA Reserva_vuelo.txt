@@ -12,3 +12,25 @@ siguiente funcionalidad:
 ● consultar qué pasajero está sentado en una butaca dada
 ● consultar la cantidad de butacas libres
 ● devolver un listado de pasajeros
+
+
+CLASS Reserva_vuelo
+BASIC CONSTRUCTORS initReservas, agregar
+EFFECTIVE
+TYPE Reserva_vuelo
+OPERATIONS
+    initReservas: 
+    agregar:
+    eliminar:
+    eliminarTodas:
+    avionLleno:
+    pasajeroSentado:
+    cantButacasLibres:
+    listadoPasajeros:
+AXIOMS
+
+
+
+
+
+END-CLASS

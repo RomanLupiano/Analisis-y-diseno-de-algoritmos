@@ -16,7 +16,7 @@ OPERATIONS
     anota_Equipo1: Tablero x Natural -> Tablero; //Modificadora
     anota_Equipo2: Tablero x Natural -> Tablero; //Modificadora
 
-    AXIOMS n1,n2: Natural;
+AXIOMS n1,n2: Natural;
     puntaje_Equipo1 (crearTablero (n1,n2))= n1;
     puntaje_Equipo2 (crearTablero (n1,n2))= n2;
     n1 > n2 => gana_Equipo1 (crearTablero (n1,n2))= True;

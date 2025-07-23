@@ -8,38 +8,28 @@ con las siguientes operaciones:
 dado
 ● suma: devuelve la suma de dos polinomios.
 
-CLASS Monomio
-IMPORTS String
-BASIC CONSTRUCTORS crear
-EFFECTIVE
-TYPE Monomio
-OPERATIONS
-    crear: Natural * String * Natural(g) -> Monomio;
-        pre: g >= 0;
-    coeficiente: Monomio -> Natural;
-    variable: Monomio-> String;
-    grado: Monomio -> Natural;
-    suma: Monomio(a) * Monomio(b) -> Monomio;
-        pre: (variable(a) == variable(b)) and (grado(a)==grado(b));
-AXIOMS v, v1: String; c, c1, g, g1: Natural;
-    coeficiente(crear(c, v, g)) = c;
-    variable(crear(c, v, g)) = v;
-    grado(crear(c, v, g)) = g;
-    suma(crear(c, v, g), crear(c1, v1, g1)) = crear(c+c2, v, g);
-END-CLASS
-
-
 CLASS Polinomio
-IMPORTS Monomio
 BASIC CONSTRUCTORS cero, añadir
 EFFECTIVE
 TYPE Polinomio
 OPERATIONS
     cero: -> Polinomio;
-    añadir: Polinomio * Polinomio -> Polinomio;
+    añadir: Polinomio * Natural * Natural(g) -> Polinomio
+        pre: g >= 0;
     evaluar: Polinomio * Real -> Real;
-    coeficiente: Polinomio * Natural -> Natural;
+    coeficiente: Polinomio * Natural(g) -> Natural
+        pre: g >= 0;
     suma: Polinomio * Polinomio -> Polinomio;
-AXIOMS
-    
+AXIOMS p, q: Polinomio; c, c1, g, g1: Natural; x: Real;
+    evaluar(cero(), x) = 0;
+    evaluar(añadir(p, c, g), x) = c * (x)^g + evaluar(p, x);
+
+    coeficiente(cero(), g) = 0;
+    (g1 == g) => coeficiente(añadir(p, c, g), g1) = c;
+    not (g1 == g) => coeficiente(añadir(p, c, g), g1) = coeficiente(p, g1);
+
+    suma(p, cero()) = p;
+    suma(cero(), p) = p;
+    (g==g1) => suma(añadir(p, c, g), añadir(q, c1, g1)) = añadir(suma(p, q), c+c1, g);
+    not (g==g1) => suma(añadir(p, c, g), añadir(q, c1, g1)) = añadir(suma(p, añadir(q, c1, g1)), c, g);
 END-CLASS
