@@ -1,10 +1,15 @@
 #include <iostream>
 
+using namespace std;
+
+
 int main(int argc, char * argv[])
 {
-    std::cout << "Cantidad de argumentos: " << argc << "\n";
-    std::cout << "Argumentos: ";
-    for (int i = 0; i < argc; i++)
-        std::cout << argv[i] << " ";
+    int n = 10;
+    int * ptr = NULL;
+    ptr = &n;
+    *ptr = 20;
+
+    cout << "ptr: " << ptr << " | *ptr: "<< *ptr << " | n: " << n <<  " | &n: " << &n << "\n";
     return 0;
 }
