@@ -8,36 +8,14 @@ class Pila {
         };
 
         Nodo * primero;
-        Nodo * crearNodo(const T & elemento);
+        Nodo * crearNodo(const T & elemento); //O(1);
     
 
     public:
-        Pila(); //Constructor
-        ~Pila(); //Destructor
-        void agregar(const T & elemento);
-        bool eliminar();
-        const T & tope() const;
-        bool vaciaPila() const;
+        Pila(); //Constructor               O(1)
+        ~Pila(); //Destructor               O(n) (Porque recorre todos los elementos (n) para eliminarlos)
+        void agregar(const T & elemento); //O(1);
+        bool eliminar();                  //O(1);
+        const T & tope() const;           //O(1);
+        bool vaciaPila() const;           //O(1);
 };
-
-/*
-CLASS Pila [Elemento]
-BASIC CONSTRUCTORS initPila, agregar
-EFFECTIVE
-TYPE Pila
-OPERATIONS
-    initPila: -> Pila;
-    agregar: Pila * Elemento -> Pila;
-    esVacia: Pila -> Boolean;
-    tope: Pila(p) -> Elemento
-        pre: not esVacia(p);
-    eliminar: Pila(p) -> Pila
-        pre: not esVacia(p);
-AXIOMS p: Pila; e = Elemento;
-    esVacia(initPila()) = True;
-    esVacia(agregar(p, e)) = false;
-    tope(agregar(p, e)) = e;
-    eliminar(agregar(p, e)) = p;
-
-END-CLASS
-*/

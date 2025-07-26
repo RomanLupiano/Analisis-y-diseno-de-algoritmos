@@ -7,7 +7,7 @@ OPERATIONS
     agregarLista: Lista(l) * Natural(i) * Elemento -> Lista
         pre: (i >= 1) and (i <= longLista(l)+1);
     longLista: Lista -> Natural;
-    recuperarLista: Lista(l) * Natural(i) -> Lista
+    recuperarLista: Lista(l) * Natural(i) -> Elemento
         pre: (i >= 1) and (i <= longLista(l));
     eliminarLista: Lista(l) * Natural(i) -> Lista
         pre: (i >= 1) and (i <= longLista(l));
