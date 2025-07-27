@@ -1,0 +1,17 @@
+La clase Recorrible especifica en forma incompleta el comportamiento de estructuras
+que pueden ser recorridas. Independientemente del tipo de estructura que se trate y
+cualquiera sea la forma de recorrerla, necesitaremos operaciones para acceder a un
+elemento (primero), a la estructura restante (resto), y reconocer el final (fin). Estas
+operaciones no pueden definirse en forma completa hasta no saber el tipo de estructura
+por ejemplo, un árbol o una lista. 
+
+CLASS Recorrible [Elemento]
+DEFERRED
+TYPE Recorrible
+OPERATIONS
+    fin: Recorrible -> Boolean;
+    primero: Recorrible(t) -> Elemento
+        pre: not fin(t);
+    resto: Recorrible(t) -> Recorrible
+        pre: not fin(t);
+END-CLASS;

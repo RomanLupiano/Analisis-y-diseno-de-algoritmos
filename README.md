@@ -29,3 +29,6 @@ Repositorio con implementaciones y ejercicios sobre Análisis y Diseño de Algor
 - **Programación dinámica**: LCS, matriz óptima, BST óptimo
 
 ---
+
+## 📺 Videos recomendados
+- [Recursion in Programming - Full Course](https://youtu.be/IJDJ0kBx2LM)
