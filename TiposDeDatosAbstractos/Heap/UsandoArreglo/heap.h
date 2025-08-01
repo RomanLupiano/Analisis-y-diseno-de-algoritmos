@@ -1,15 +1,19 @@
 class Heap {
     private:
+        static const unsigned int MAX = 100;
         int * heap;
         unsigned int cantidad;
 
     public:
-        Heap();
-        ~Heap();
-        void agregarHeap(unsigned int num);
-        bool vacioHeap() const;
-        unsigned int raizHeap() const;
-        void eliminarHeap();
+        Heap();                             //O(1)
+        ~Heap();                            //O(1) 
+        void agregarHeap(unsigned int num); //O(log n)
+        bool vacioHeap() const;             //O(1)
+        unsigned int raizHeap() const;      //O(1)
+        void eliminarHeap();                //O(log n)
+
+
+        void imprimirHeap() const; //Extra  //O(n)
 };
 
 /*
