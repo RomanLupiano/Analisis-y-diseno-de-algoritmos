@@ -1,0 +1,13 @@
+CLASS PostArbin [Elemento]
+IS-SUBTYPE-OF Arbin [Elemento]; Recorrible [Elemento] rename fin as vacioArbin
+EFFECTIVE
+TYPE PostArbin
+OPERATIONS primero, resto, vacioArbin;
+AXIOMS t1, t2: PostArbin; x: Elemento;
+    vacioArbin(t1) and vacioArbin(t2) => primero(crearArbin(t1, t2, x) as PostArbin) = x;
+    vacioArbin(t1) and not vacioArbin(t2) => primero(crearArbin(t1, t2, x) as PostArbin) = primero(t2);
+    not vacioArbin(t1) and vacioArbin(t2) => primero(crearArbin(t1, t2, x) as PostArbin) = primero(t1);
+
+    vacioArbin(t1) and vacioArbin(t2) => resto(crearArbin(t1, t2, x) as PostArbin) = inicArbin() as PostArbin;
+    vacioArbin(t1) and not vacioArbin(t2) => resto(crearArbin(t1, t2, x) as PostArbin) = crearArbin(t1, resto(t2), x) as PostArbin;
+    not vacioArbin(t1) and vacioArbin(t2) => resto(crearArbin(t1, t2, x) as PostArbin) = crearArbin(resto(t1), t2, x) as PostArbin;

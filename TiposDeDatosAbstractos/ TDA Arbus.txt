@@ -1,0 +1,28 @@
+CLASS Arbus [Elemento:Con Orden]
+IS-SUBTYPE-OF Arbin[Elemento]
+BASIC CONSTRUCTORS inicArbin, agregarArbus
+EFFECTIVE
+OPERATIONS
+    agregarArbus: Arbus(t) * Elemento(e) - > Arbus
+    pre: not pertenece(t,e);
+    eliminarArbus: Arbus(t) * Elemento(e) - > Arbus
+    pre: not vacioArbin(t)
+AXIOMS a1, a2: Arbus; e, e1,j,k: Elemento;
+    agregarArbus(inicArbin() as Arbus, e) = crearArbin(inicArbin(), inicArbin(), e) as Arbus;
+    (e==e1) => agregarArbus(crearArbin(a1,a2,e1), e) = crearArbin(a1,a2,e1) as Arbus;
+    (e>e1) => agregarArbus(crearArbin(a1,a2,e1), e) = crearArbin(a1, agregarArbus(a2, e),e1) as Arbus;
+    (e<e1) => agregarArbus(crearArbin(a1,a2,e1), e) = crearArbin(agregarArbus(a1, e), a2,e1) as Arbus;
+
+    crearArbin(inicArbin(), inicArbin(), e) as Arbus = agregarArbus(inicArbin() as Arbus, i);
+    not (e==e1) and not pertenece(a2, e) => crearArbin(inicArbin(), agregarArbus(a2, e1), e) as Arbus = agregarArbus(agregarArbus(a2, e1), e);
+    (e==e1) or pertenece(a2, e) => crearArbin(inicArbin(), agregarArbus(a2, e1), e) as Arbus = agregarArbus(a2, e1);
+    not (e==e1) and not pertenece(a1, e) => crearArbin(agregarArbus(a1, e1), inicArbin(), e) as Arbus = agregarArbus(agregarArbus(a1, e1), e);
+    (e==e1) or pertenece(a1, e) => crearArbin(agregarArbus(a1, e1), inicArbin(), e) as Arbus = agregarArbus(a1, e1);
+
+    not (j==k) and not pertenece(a1, k) => crearArbin(agregarArbus(a1, j), agregarArbus(a2, k), e) as Arbus = crearArbin(agregarArbus(agregarArbus(a1,j), k), a2, e) as Arbus;
+    ((j=k) or pertenece(a1,k)) => crearArbin(agregarArbus(a1,j), agregarArbus(a2,k), e) as Arbus = crearArbin(agregarArbus(a1,j), a2, e) as Arbus; 
+
+    (e==e1) => eliminarArbus(agregarArbus(a1, e1), e) = a1;
+    not (e==e1) and not esVacio(a1) => eliminarArbus(agregarArbus(a1, e1), e) = agregarArbus(eliminarArbus(a1, e), e1);
+    not (e==e1) and esVacio(a1) => eliminarArbus(agregarArbus(a1, e1), e) = agregarArbus(inicArbus(), e1);
+END-CLASS

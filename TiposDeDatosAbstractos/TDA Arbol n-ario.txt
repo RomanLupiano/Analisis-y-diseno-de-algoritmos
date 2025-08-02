@@ -1,0 +1,18 @@
+CLASS Arbol [elemento]
+IMPORTS Natural, Lista [Arbol]
+BASIC CONSTRUCTORS inic, construir
+EFFECTIVE
+TYPE Arbol
+OPERATIONS
+    inic: -> Arbol;
+    construir: elemento * Lista [Arbol] -> Arbol; -- construye un árbol n-ario con un elemento (raíz) y una lista de árboles n-arios
+    vacío: Arbol -> bool;
+    raíz : Arbol(a) -> elemento
+        pre: not vacio(a);
+    hijos: Arbol (a) -> Lista [Arbol] 
+        pre: ... ;
+    subárbol_i: Arbol (a) * Natural (i) -> Arbol
+        pre: not esHoja (a) and ... ; -- devuelve el i-ésimo subárbol
+    esHoja:
+    cantidadHijos:
+AXIOMS ...
