@@ -1,0 +1,21 @@
+Supongamos que tenemos 3 algoritmos alternativos para resolver un problema de tamaño n:
+a) El algoritmo A resuelve el problema dividiéndolo en dos subproblemas de tamaño n/2,
+resuelve recursivamente cada subproblema y combina la solución en tiempo lineal.
+
+b) El algoritmo B resuelve el problema resolviendo dos subproblemas de tamaño n-1 y
+combinando la solución en tiempo constante.
+
+c) El algoritmo C resuelve el problema dividiéndolo en 9 subproblemas de tamaño n/3, resuelve
+recursivamente cada uno de esos subproblemas y combina las soluciones en tiempo O(n^3).
+
+¿Cuál es el tiempo de ejecución de cada uno de esos algoritmos (en notación Big-O) y cuál
+escogería para resolver el problema?
+
+El algoritmo A pertenece a O(n log n), n por la combinación en tiempo lineal y logn por resolver subproblemas de tamaño n/2.
+Recurrencia: 2T(n/2) + c*n
+El algoritmo B pertenece a O(2^n), ya que divide el problema en 2 de tamaño n-1. Duplica la cantidad de problemas en cada nivel de llamados.
+Recurrencia: 2T(n-1) + c
+El algoritmo C pertenece a O(n^3).
+Recurrencia: 9T(n/3) + c*n^3
+
+El algoritmo que escogería sería el A, ya que es el que menos crece con el tamaño de la entrada respecto a los otros dos algoritmos.
